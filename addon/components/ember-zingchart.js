@@ -44,13 +44,7 @@ export default Ember.Component.extend({
 
 		return [renderOptions,chartData,themeData];
 	}),
-	_renderChart: (function() {
-		this.renderLater();
-	}).on('didInsertElement'),
-	renderLater:function(){
-		Ember.run.scheduleOnce('afterRender',this,'render');
-	},
-	render:function(){
+	didRender:function(){
 		var buildOptions=this.get('buildOptions');
 		var options=buildOptions[0];
 		options['data']=buildOptions[1];
